@@ -2,26 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+    scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+    display: none;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+    .blue_gradient {
+        @apply bg-gradient-to-l from-blue-400 to-blue-500;
+    }
+
+    .blue_gradient-2 {
+        @apply bg-gradient-to-tr from-blue-500 to-blue-400;
+    }
+
+    .blue_gradient-header {
+        @apply bg-gradient-to-l from-blue-400 to-blue-500 md:bg-none;
+    }
+
+    .subtitles-p {
+        @apply font-medium text-xl leading-3 font-sans;
+    }
+
+    .subtitles-span {
+        @apply font-semibold text-xl leading-3 font-sans;
+    }
+
+    /*Header*/
+
+    .menu {
+        @apply transition-all duration-300 absolute blue_gradient-header rounded-2xl p-5 md:flex md:static md:gap-[14rem];
+    }
+
+    .menu-activce {
+        @apply transform translate-y-8 right-6 sm:right-9 md:translate-y-0;
+    }
+
+    .menu-inactive {
+        @apply transform -translate-y-96 right-6 md:translate-y-0;
+    }
 }
