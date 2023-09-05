@@ -56,6 +56,7 @@ module.exports = {
       backgroundImage: {
         wavedownload: 'url(/assets/img/home/wavedownload.svg)',
         celphonetelegram: 'url(/assets/img/home/jointelegram.svg)',
+        sereno:'url(/images/home/vector.svg)'
       },
     },
   },
