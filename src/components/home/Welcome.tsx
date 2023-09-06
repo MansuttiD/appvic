@@ -3,7 +3,7 @@ const Welcome = () => {
     <>
       <div className=" grid grid-cols-1 gap-7 mb-[35px]  md:grid-cols-[2fr,1fr] md:grid-rows-[25%,75%] md:mb-[45px]">
         <h1 className="font-medium text-[40px] text-[#242C41] col-span-full hidden md:inline-block" >Bienvenido, <span className="font-black">Carlos Añez</span></h1>
-        <section className="bg-[#F8F8F6] bg-sereno bg-no-repeat bg-right-top py-6 px-11 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:flex md:flex-col md:justify-center">
+        <section className="bg-[#FFF] bg-sereno bg-no-repeat bg-right-top py-6 px-11 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:flex md:flex-col md:justify-center">
             <h3 className="text-base font-semibold">Balance Total</h3>
             <p className="text-2xl font-black">$135,950</p>
             <div className="flex gap-[6px]">
