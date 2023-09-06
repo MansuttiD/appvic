@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,10 @@
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+  }
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
@@ -38,8 +44,8 @@ html {
         @apply transition-all duration-300 absolute blue_gradient-header rounded-2xl p-5 md:flex md:static md:gap-[14rem];
     }
 
-    .menu-activce {
-        @apply transform translate-y-8 right-6 sm:right-9 md:translate-y-0;
+    .menu-active {
+        @apply transform translate-y-32 right-2 sm:right-9 md:translate-y-0;
     }
 
     .menu-inactive {

@@ -44,6 +44,7 @@ module.exports = {
         blue_400: '#49A0F9',
         blue_500: '#1277DD',
         dark_blue: '#05103F',
+        soft_blue: '#242C41',
         white: '#FFFFFF',
         black_footer: '#232233',
         general_backgound: '#FFFAFF',

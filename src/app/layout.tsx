@@ -1,6 +1,7 @@
-import './globals.css';
+import Header from '@/components/shared/Header';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,12 +12,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  showHeader = true, // Agrega una prop para controlar la visibilidad del encabezado
 }: {
   children: React.ReactNode;
+  showHeader?: boolean;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {showHeader && <Header />} {/* Mostrar el encabezado si showHeader es true */}
+        {children}
+      </body>
     </html>
   );
 }
