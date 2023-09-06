@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
-import { FaRegEyeSlash } from 'react-icons/fa';
+import { FaRegEyeSlash, FaUserAlt } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { GrMail } from 'react-icons/gr';
+import { SiKeycdn } from 'react-icons/si';
 
 interface FormData {
   user: string;
@@ -38,41 +39,43 @@ export default function LoginForm() {
 
     <section className="bg-[#f8f8f6] ">
       <div className="p-4 flex justify-center items-center min-h-[calc(100vh-70px)] md:min-h-[calc(100vh-100px)]">
-        <div className="p-7 m-4 shadow-lg rounded-2xl bg-white lg:min-w-[900px]">
+        <div className="p-7 m-4 shadow-lg rounded-2xl bg-white sm:min-w-[600px] lg:min-w-[900px]">
           <div className="flex flex-col justify-center align-middle text-center">
-            <h1 className="font-black text-2xl">Sereno</h1>
-            <p className="font-medium text-base mb-4">Loguéate</p>
+            <h1 className="font-black text-dark_blue text-2xl">Sereno</h1>
+            <p className="font-medium text-soft_blue text-base mb-4">Loguéate</p>
           </div>
 
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div>
+              <div className='pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1'>
+              <FaUserAlt className="text-[#9E9E9E] text-md" />
                     <input
                       placeholder="Nombre o Correo"
-                      className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-2"
+                      className="h-12 w-full outline-none ml-2"
                       type="text"
                       id='user'
                       {...register('user', { required: true })}
                     />
                 {errors.user && <span>{errors.user.message}</span>}
               </div>
-              <div className="relative flex justify-between items-center">
+              <div className="pl-2 pr-5 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
+              <SiKeycdn className="text-[#9E9E9E] text-xl" />
                     <input
                       placeholder="Contraseña"
-                      className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-4"
+                      className="h-12 w-full outline-none ml-2"
                       type={passwordSingUp}
                       id='password'
                       {...register('password', { required: true })}
                     />
                                     <AiOutlineEye
                   onClick={handlePasswordText}
-                  className={`absolute right-5 -translate-y-1/2 text-md top-[38%] ${
+                  className={`text-md text-[#9E9E9E] ${
                     passwordSingUp == 'text' ? 'hidden' : ''
                   }`}
                 />
                 <FaRegEyeSlash
                   onClick={handlePasswordSingUp}
-                  className={`absolute right-5 -translate-y-1/2 text-md top-[38%] ${
+                  className={`text-md text-[#9E9E9E] ${
                     passwordSingUp == 'password' ? 'hidden' : ''
                   }`}
                 />

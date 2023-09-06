@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         {showHeader && <Header />} {/* Mostrar el encabezado si showHeader es true */}
         {children}
       </body>

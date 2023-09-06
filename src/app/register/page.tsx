@@ -2,10 +2,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye } from 'react-icons/ai';
+import { BiSolidPhone } from 'react-icons/bi';
 import { BsFacebook } from 'react-icons/bs';
-import { FaRegEyeSlash } from 'react-icons/fa';
+import { FaRegEyeSlash, FaUserAlt } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { GrMail } from 'react-icons/gr';
+import { SiKeycdn } from 'react-icons/si';
+
 
 interface FormData {
   user: string;
@@ -16,7 +19,7 @@ interface FormData {
   email: string;
 }
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const {
     register,
     handleSubmit,
@@ -63,11 +66,12 @@ export default function LoginForm() {
 
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <section className="flex flex-col md:flex-row">
-                <div className="md:w-1/2 md:pr-2">
+              <section className="flex flex-col gap-3 md:flex-row">
+                <div className="md:w-1/2 pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
+                <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
                   <input
                     placeholder="Usuario"
-                    className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-2"
+                    className="h-12 w-full ml-2 outline-none"
                     type="text"
                     id="user"
                     autoComplete="false"
@@ -76,10 +80,11 @@ export default function LoginForm() {
                   {errors.user && <span>{errors.user.message}</span>}
                 </div>
 
-                <div className="md:w-1/2 md:pl-2">
+                <div className="md:w-1/2 pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
+                <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
                   <input
                     placeholder="Nombre"
-                    className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-2"
+                    className="h-12 w-full ml-2 outline-none"
                     type="text"
                     id="username"
                     autoComplete="false"
@@ -89,11 +94,12 @@ export default function LoginForm() {
                 </div>
               </section>
 
-              <section className="flex flex-col md:flex-row">
-                <div className="md:w-1/2 md:pr-2">
+              <section className="flex flex-col gap-3 md:flex-row">
+                <div className="md:w-1/2 pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
+                <BiSolidPhone className="text-[#9E9E9E] text-xl" />
                   <input
                     placeholder="Teléfono"
-                    className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-2"
+                    className="h-12 w-full ml-2 outline-none"
                     type="number"
                     id="phone"
                     autoComplete="false"
@@ -104,11 +110,11 @@ export default function LoginForm() {
                 </div>
 
                 <div className="md:w-1/2 pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
-                  <GrMail className="text-[#9E9E9E] text-xl" />
+                  <GrMail className="text-[#9E9E9E] text-md" />
 
                   <input
                     placeholder="Correo electrónico "
-                    className="h-12 w-full   outline-none "
+                    className="h-12 w-full ml-2 outline-none"
                     type="email"
                     id="email"
                     autoComplete="true"
@@ -119,10 +125,11 @@ export default function LoginForm() {
                 </div>
               </section>
 
-              <div className="relative flex justify-between items-center">
+              <div className="pl-2 pr-5 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center mb-4 overflow-hidden gap-1">
+              <SiKeycdn className="text-[#9E9E9E] text-xl" />
                 <input
                   placeholder="Contraseña"
-                  className="h-12 w-full border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-4 outline-none mb-4"
+                  className="h-12 w-full ml-2 outline-none"
                   type={passwordSingUp}
                   id="password"
                   autoComplete="off"
@@ -130,13 +137,13 @@ export default function LoginForm() {
                 />
                 <AiOutlineEye
                   onClick={handlePasswordText}
-                  className={`absolute right-5 -translate-y-1/2 text-md top-[38%] ${
+                  className={`text-md text-[#9E9E9E] ${
                     passwordSingUp == 'text' ? 'hidden' : ''
                   }`}
                 />
                 <FaRegEyeSlash
                   onClick={handlePasswordSingUp}
-                  className={`absolute right-5 -translate-y-1/2 text-md top-[38%] ${
+                  className={`text-md text-[#9E9E9E] ${
                     passwordSingUp == 'password' ? 'hidden' : ''
                   }`}
                 />
