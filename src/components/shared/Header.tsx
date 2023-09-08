@@ -48,10 +48,10 @@ const Header = () => {
         >
           <ul className="flex flex-col justify-center items-center font-medium text-white md:flex-row gap-[10px] mb-3 md:gap-[60px] md:mb-0 md:text-black">
             <li>
-              <Link href="/">Login</Link>
+              <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/">Registrate</Link>
+              <Link href="/register">Registrate</Link>
             </li>
             <li>
               <Link href="/#">Soporte</Link>
