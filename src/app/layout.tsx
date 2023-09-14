@@ -1,8 +1,8 @@
 import Header from '@/components/shared/Header';
+import { ApolloWrapper } from '@/libs/client';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,9 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
-        {showHeader && <Header />} {/* Mostrar el encabezado si showHeader es true */}
-        {children}
+        <ApolloWrapper>
+          {showHeader && <Header />}{' '}
+          {/* Mostrar el encabezado si showHeader es true */}
+          {children}
+        </ApolloWrapper>
       </body>
     </html>
   );
 }
+

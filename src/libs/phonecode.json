@@ -1,0 +1,85 @@
+{
+    "countrys": [
+      {
+        "codigo": "Argentina",
+        "codigo_numerico": "+54"
+      },
+      {
+        "codigo": "Bolivia",
+        "codigo_numerico": "+591"
+      },
+      {
+        "codigo": "Brasil",
+        "codigo_numerico": "+55"
+      },
+      {
+        "codigo": "Chile",
+        "codigo_numerico": "+56"
+      },
+      {
+        "codigo": "Colombia",
+        "codigo_numerico": "+57"
+      },
+      {
+        "codigo": "Costa Rica",
+        "codigo_numerico": "+506"
+      },
+      {
+        "codigo": "Cuba",
+        "codigo_numerico": "+53"
+      },
+      {
+        "codigo": "Ecuador",
+        "codigo_numerico": "+593"
+      },
+      {
+        "codigo": "El Salvador",
+        "codigo_numerico": "+503"
+      },
+      {
+        "codigo": "Guatemala",
+        "codigo_numerico": "+502"
+      },
+      {
+        "codigo": "Honduras",
+        "codigo_numerico": "+504"
+      },
+      {
+        "codigo": "México",
+        "codigo_numerico": "+52"
+      },
+      {
+        "codigo": "Nicaragua",
+        "codigo_numerico": "+505"
+      },
+      {
+        "codigo": "Panamá",
+        "codigo_numerico": "+507"
+      },
+      {
+        "codigo": "Paraguay",
+        "codigo_numerico": "+595"
+      },
+      {
+        "codigo": "Perú",
+        "codigo_numerico": "+51"
+      },
+      {
+        "codigo": "Puerto Rico",
+        "codigo_numerico": "+1"
+      },
+      {
+        "codigo": "República Dominicana",
+        "codigo_numerico": "+1"
+      },
+      {
+        "codigo": "Uruguay",
+        "codigo_numerico": "+598"
+      },
+      {
+        "codigo": "Venezuela",
+        "codigo_numerico": "+58"
+      }
+    ]
+  }
+  

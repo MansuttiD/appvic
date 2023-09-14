@@ -1,4 +1,6 @@
 'use client';
+import { gql, useMutation } from '@apollo/client';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye } from 'react-icons/ai';
@@ -20,9 +22,23 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    // Aquí puedes manejar la lógica de inicio de sesión con los datos del formulario
-    console.log(data);
+
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const { data } = await createUser({
+        variables: {
+          input: formData,
+        },
+      });
+
+      // Muestra la respuesta en la consola
+      console.log('Respuesta de la API GraphQL:', data);
+
+      // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
+    } catch (error) {
+      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
+      console.error('Error al llamar a la API GraphQL:', error);
+    }
   };
 
   const [passwordSingUp, setPasswordSingUp] = useState('password');
@@ -35,8 +51,28 @@ export default function LoginForm() {
     setPasswordSingUp('text');
   };
 
+
+
+  const REGISTER_USER = gql`
+    mutation CreateUser($input: CreateUserInput!) {
+      createUser(input: $input) {
+        name
+        password
+      }
+    }
+  `;
+
+
+  const [createUser] = useMutation(REGISTER_USER); 
+
+
+
+
+
+
+
   return (
-    <section className="bg-[#f8f8f6] ">
+    <section className="bg-[#FFFAFF] ">
       <div className="p-4 flex justify-center items-center min-h-[calc(100vh-70px)] md:min-h-[calc(100vh-100px)]">
         <div className="p-7 m-4 shadow-lg rounded-2xl bg-white sm:min-w-[600px] lg:min-w-[900px]">
           <div className="flex flex-col justify-center align-middle text-center">
@@ -80,22 +116,41 @@ export default function LoginForm() {
 
               </div>
               <button
-                className="mb-4 w-full py-3 rounded-2xl font-semibold text-[18px] text-white bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-500 hover:bg-gradient-to-tl hover:from-blue-500 hover:via-blue-400 hover:to-blue-400 transition duration-300 transform hover:-translate-y-1"
+                className="mb-6 w-full py-3 rounded-2xl font-semibold text-[18px] text-white bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-500 hover:bg-gradient-to-tl hover:from-blue-500 hover:via-blue-400 hover:to-blue-400 transition duration-300 transform hover:-translate-y-1"
                 type="submit"
               >
                 Log in
               </button>
+              <div className='flex flex-col gap-3 text-[#9E9E9E] mb-6'>
+              <p>¿Olvidaste tu contraseña?</p>
+              <span>¿No estas registrado? <Link href="/register" className="underline">Crea una cuenta</Link></span>
+              </div>
+
             </form>
 
-          <div className="flex justify-center align-middle gap-6">
-            <button className="border-[2px] border-solid boder-[#E7E7E7] rounded-2xl p-2">
+            <div className="flex justify-center align-middle gap-6">
+            {/* Botón de Google */}
+            <button className="border-[2px] border-solid border-[#E7E7E7] rounded-2xl p-2 flex items-center">
               <FcGoogle className="text-xl" />
+              <span className="hidden md:block ml-2 text-[#9E9E9E]">
+                Continúa con Google
+              </span>
             </button>
-            <button className="border-[2px] border-solid boder-[#E7E7E7] rounded-2xl p-2">
+
+            {/* Botón de Facebook */}
+            <button className="border-[2px] border-solid border-[#E7E7E7] rounded-2xl p-2 flex items-center">
               <BsFacebook className="text-[#3C5A9A] text-xl" />
+              <span className="hidden md:block ml-2 text-[#9E9E9E]">
+                Continúa con Facebook
+              </span>
             </button>
-            <button className="border-[2px] border-solid boder-[#E7E7E7] rounded-2xl p-2">
+
+            {/* Botón de Email */}
+            <button className="border-[2px] border-solid border-[#E7E7E7] rounded-2xl p-2 flex items-center">
               <GrMail className="text-[#9E9E9E] text-xl" />
+              <span className="hidden md:block ml-2 text-[#9E9E9E]">
+                Continúa con Email
+              </span>
             </button>
           </div>
         </div>
