@@ -88,7 +88,12 @@ export default function LoginForm() {
                       className="h-12 w-full outline-none ml-2"
                       type="text"
                       id='user'
-                      {...register('user', { required: true })}
+                      {...register('user', { 
+                        required: {
+                          value: true,
+                          message: 'Nombre o correo requerido'
+                        }
+                      })}
                     />
                 {errors.user && <span>{errors.user.message}</span>}
               </div>
@@ -99,7 +104,12 @@ export default function LoginForm() {
                       className="h-12 w-full outline-none ml-2"
                       type={passwordSingUp}
                       id='password'
-                      {...register('password', { required: true })}
+                      {...register('password', { 
+                        required: {
+                          value: true,
+                          message: "Contraseña requerida"
+                        } 
+                      })}
                     />
                                     <AiOutlineEye
                   onClick={handlePasswordText}
