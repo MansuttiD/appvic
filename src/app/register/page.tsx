@@ -220,8 +220,9 @@ export default function RegisterForm() {
                   <BiSolidPhone className="text-[#9E9E9E] text-xl" />
 
                   <select
+                  size={1}
                     {...register('countrycode')}
-                    className="countrycode outline-none text-[#9E9E9E]"
+                    className="appearance-none outline-none bg-transparent text-[#9E9E9E]"
                   >
                     {phonecode.countrys.map((country) => (
                       <option

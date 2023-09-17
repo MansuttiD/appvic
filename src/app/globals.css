@@ -52,7 +52,3 @@ body {
         @apply transform -translate-y-96 right-6 md:translate-y-0;
     }
 }
-
-.countrycode{
-  appearance: none;
-}
