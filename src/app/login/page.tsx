@@ -90,7 +90,10 @@ export default function LoginForm() {
                 />
               </div>
               {errors.user && (
-                <span style={{ color: 'red' }}>{errors.user.message}</span>
+                <span style={{ 
+                  color: 'red',
+                  fontSize: '12px',
+                }}>{errors.user.message}</span>
               )}
             </div>
             <div className="mb-4 flex flex-col">
@@ -122,7 +125,10 @@ export default function LoginForm() {
                 />
               </div>
               {errors.password && (
-                <span style={{ color: 'red' }}>{errors.password.message}</span>
+                <span style={{ 
+                  color: 'red',
+                  fontSize: '12px',
+              }}>{errors.password.message}</span>
               )}
             </div>
 

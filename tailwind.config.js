@@ -53,6 +53,7 @@ module.exports = {
         button: '0 10px 40px -15px RGBA(18, 119, 221, 0.7)',
         paymentbox: '0 10px 40px -15px rgba(14, 76, 139, 0.25)',
         faqbox: '0px 10px 40px -15px rgba(14, 76, 139, 0.25)',
+        dadada: '0px 3px 17px 3px rgba(0,0,0,0.07)',
       },
       backgroundImage: {
         wavedownload: 'url(/assets/img/home/wavedownload.svg)',
