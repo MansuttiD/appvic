@@ -8,7 +8,7 @@ export default function BankAccounts() {
         <h1 className="text-xl font-semibold">Gestor de cuentas</h1>
         <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4">
           <thead>
-            <tr className="h-full flex flex-col justify-evenly">
+            <tr className="h-full flex flex-col justify-evenly gap-4">
               <th className="text-start">Banco</th>
               <th className="text-start">Titular</th>
               <th className="text-start">Dirección</th>
@@ -17,7 +17,7 @@ export default function BankAccounts() {
             </tr>
           </thead>
           <tbody>
-            <tr className="h-full flex flex-col justify-evenly gap-4">
+            <tr className="h-full flex flex-col justify-evenly gap-4 ">
               <td className="text-start">Banesco</td>
               <td className="text-start">José Hérnandez</td>
               <td className="text-start">Vender</td>
@@ -25,7 +25,7 @@ export default function BankAccounts() {
               <td className="text-start">Aprobada</td>
             </tr>
           </tbody>
-          <div className='text-[#D9D9D9] text-xl'>
+          <div className='text-[#D9D9D9] text-xl '>
             <AiOutlineMore />
           </div>
         </table>

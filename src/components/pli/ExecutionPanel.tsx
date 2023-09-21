@@ -2,8 +2,8 @@
 
 const ExecutionPanel = () => {
   return (
-    <div className="h-screen bg-[#FFFAFF]">
-      <header className="mb-5 flex flex-col">
+    <div className="h-screen max-w-xs mx-auto">
+      <header className="  mb-5  flex-col">
         <h1 className="font-semibold text-xl mb-6">Panel de ejecucion</h1>
         <div className="flex gap-4 font-normal text-sm mb-2">
           <p className="text-sm">Tomadas</p>
@@ -22,7 +22,7 @@ const ExecutionPanel = () => {
         </div>
       </header>
       <section className="flex flex-col gap-3">
-        <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4">
+        <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4 md:hidden">
           <thead>
             <tr className="h-full flex flex-col justify-evenly">
               <th className="text-start">Tipo</th>
@@ -49,8 +49,6 @@ const ExecutionPanel = () => {
             <img className="" src=".\images\pli\arrowDawn.svg" alt="" />
           </div>
         </table>
-        <div>
-        </div>
       </section>
     </div>
   );
