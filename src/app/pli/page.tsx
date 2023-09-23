@@ -1,12 +1,12 @@
-import Banks from "@/components/pli/Banks";
-import Transactions from "@/components/pli/Transactions";
+import ExecutionPanel from "@/components/pli/ExecutionPanel";
 
 export default function Pli() {
   return (
-    <section className='general_backgound'>
+    <section className='bg-gray-500'>
       <div className="pb-5">
-        <Banks/>
-        <Transactions/>
+        {/* <Banks/>
+        <Transactions/> */}
+        <ExecutionPanel/>
       </div>
     </section>
   );

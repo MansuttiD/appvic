@@ -22,6 +22,10 @@ body {
         @apply bg-gradient-to-l from-blue-400 to-blue-500;
     }
 
+    .white_grey_gradient{
+        @apply bg-gradient-to-r from-grey_light to-grey_medium;
+    }
+
     .blue_gradient-2 {
         @apply bg-gradient-to-tr from-blue-500 to-blue-400;
     }

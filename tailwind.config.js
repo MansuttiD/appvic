@@ -48,6 +48,8 @@ module.exports = {
         white: '#FFFFFF',
         black_footer: '#232233',
         general_backgound: '#FFFAFF',
+        grey_light:'#F8F8F6',
+        grey_medium:'#8F99A9'
       },
       boxShadow: {
         button: '0 10px 40px -15px RGBA(18, 119, 221, 0.7)',
