@@ -1,4 +1,4 @@
-import Header from '@/components/shared/Header';
+import HeaderPli from '@/components/shared/HeaderPli';
 import { ApolloWrapper } from '@/libs/client';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
         <ApolloWrapper>
-          {showHeader && <Header />}{' '}
+          {showHeader && <HeaderPli />}{' '}
           {/* Mostrar el encabezado si showHeader es true */}
           {children}
         </ApolloWrapper>
@@ -30,4 +30,3 @@ export default function RootLayout({
     </html>
   );
 }
-
