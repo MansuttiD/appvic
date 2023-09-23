@@ -1,4 +1,4 @@
-import Header from '@/components/shared/Header';
+import HeaderPli from '@/components/shared/HeaderPli';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
-        {showHeader && <Header />} {/* Mostrar el encabezado si showHeader es true */}
+        {showHeader && <HeaderPli />} {/* Mostrar el encabezado si showHeader es true */}
         {children}
       </body>
     </html>
