@@ -1,5 +1,6 @@
 'use client';
-import { gql, useMutation } from '@apollo/client';
+import { GRAPHQL } from '@/app/models/graphql';
+import { useMutation } from '@apollo/client';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -50,16 +51,8 @@ export default function LoginForm() {
     setPasswordSingUp('text');
   };
 
-  const REGISTER_USER = gql`
-    mutation CreateUser($input: CreateUserInput!) {
-      createUser(input: $input) {
-        name
-        password
-      }
-    }
-  `;
 
-  const [createUser] = useMutation(REGISTER_USER);
+  const [createUser] = useMutation(GRAPHQL.querys.SING_IN);
 
   return (
     <section className="bg-[#FFFAFF] ">

@@ -38,7 +38,7 @@ const HeaderPli = () => {
               className="block md:hidden"
             />
           </Link>
-          <ul className="flex flex-col justify-center items-center font-medium text-white md:flex-row gap-[10px] mb-3 md:gap-[60px] md:mb-0">
+          <ul className="hidden md:flex flex-col justify-center items-center font-medium text-white md:flex-row gap-[10px] mb-3 md:gap-[60px] md:mb-0">
             <li>
               <Link className="text-soft_blue text-[13px]" href="/login">
                 Transacciones
@@ -64,8 +64,23 @@ const HeaderPli = () => {
           className={`${menuActive ? 'menu-active' : 'menu-inactive'}  menu`}
         >
           <ul className="flex flex-col justify-center items-center font-medium text-white md:flex-row gap-[10px] mb-3 md:gap-[60px] md:mb-0 md:text-black">
-            <li className="text-soft_blue text-[13px]">
+            <li className="text-[13px] text-white">
               Volver al modo usuario
+            </li>
+            <li>
+              <Link className="text-[13px] text-white" href="/login">
+                Transacciones
+              </Link>
+            </li>
+            <li>
+              <Link className="text-[13px] text-white" href="/register">
+                Cuentas
+              </Link>
+            </li>
+            <li>
+              <Link className="text-[13px] text-white" href="/#">
+                Historial de Tx
+              </Link>
             </li>
             <li>
               <Link href="/">

@@ -1,5 +1,6 @@
 'use client';
-import { gql, useMutation } from '@apollo/client';
+import { GRAPHQL } from '@/app/models/graphql';
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye } from 'react-icons/ai';
@@ -9,7 +10,7 @@ import { FaRegEyeSlash, FaUserAlt } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { GrMail } from 'react-icons/gr';
 import { SiKeycdn } from 'react-icons/si';
-import phonecode from '../../libs/phonecode.json';
+import phonecode from '../../../libs/phonecode.json';
 
 interface FormData {
   userName: string;
@@ -72,14 +73,7 @@ export default function RegisterForm() {
     setPasswordSingUp('text');
   };
 
-  const REGISTER_USER = gql`
-    mutation CreateUser($input: SignUpInput!) {
-      user: signUp(input: $input) {
-        token
-      }
-    }
-  `;
-  const [createUser, { data, loading, error }] = useMutation(REGISTER_USER);
+  const [createUser, { data, loading, error }] = useMutation(GRAPHQL.mutation.CREATE_USER);
 
   if (loading) {
     return <h2>Cargando...</h2>;
