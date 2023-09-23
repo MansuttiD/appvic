@@ -41,7 +41,7 @@ const Header = () => {
         </div>
         <div className="block text-sm text-center md:hidden">
           <p>Bienvenido,</p>
-          <p className='font-black'>Daniel Mansutti</p>
+          <p className='font-black'>Fernando Guerra</p>
         </div>
         <nav
           className={`${menuActive ? 'menu-active' : 'menu-inactive'}  menu`}

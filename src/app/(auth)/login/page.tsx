@@ -1,6 +1,6 @@
 'use client';
 import { GRAPHQL } from '@/app/models/graphql';
-import { useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/experimental-nextjs-app-support/ssr';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -25,12 +25,6 @@ export default function LoginForm() {
 
   const onSubmit = async (formData: FormData) => {
     try {
-      const { data } = await createUser({
-        variables: {
-          input: formData,
-        },
-      });
-
       // Muestra la respuesta en la consola
       console.log('Respuesta de la API GraphQL:', data);
 
@@ -52,7 +46,7 @@ export default function LoginForm() {
   };
 
 
-  const [createUser] = useMutation(GRAPHQL.querys.SING_IN);
+  const {data, loading, error} = useQuery(GRAPHQL.querys.SING_IN);
 
   return (
     <section className="bg-[#FFFAFF] ">

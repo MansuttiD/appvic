@@ -1,5 +1,5 @@
 
-import Header from '@/components/shared/Header';
+import HeaderPli from '@/components/shared/HeaderPli';
 import '../globals.css';
 
 
@@ -10,7 +10,7 @@ export default function AuthLayout({
 }) {
   return (
     <section>
-          <Header/>
+          <HeaderPli/>
           {children}
     </section>
   );
