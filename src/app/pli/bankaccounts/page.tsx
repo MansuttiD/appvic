@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 
 export default function BankAccounts() {
   return (
-    <section className="bg-[#F8F8F6] h-screen pt-5 sm:pt-11">
+    <section className=" h-screen pt-5 sm:pt-11">
       <div className="text-soft_blue mx-auto max-w-sm sm:max-w-6xl">
         <h1 className="text-xl font-semibold mb-5 sm:mb-10">
           Gestor de cuentas

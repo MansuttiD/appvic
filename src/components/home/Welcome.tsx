@@ -5,7 +5,7 @@ const Welcome = () => {
         <h1 className="font-medium text-[40px] text-[#242C41] col-span-full hidden md:inline-block" >Bienvenido, <span className="font-black">Carlos Añez</span></h1>
         <section className="bg-[#FFF] bg-sereno bg-no-repeat bg-right-top py-6 px-11 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:flex md:flex-col md:justify-center">
             <h3 className="text-base font-semibold">Balance Total</h3>
-            <p className="text-2xl font-black">$135,950</p>
+            <p className="text-2xl font-black">USDT 10.635,950</p>
 
         </section>
         <section className="bg-[#FFF] rounded-3xl flex items-center justify-between p-6 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:flex-col md:items-start">

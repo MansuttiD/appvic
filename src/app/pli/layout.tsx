@@ -9,7 +9,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className='bg-general_backgound'>
           <HeaderPli/>
           {children}
     </section>

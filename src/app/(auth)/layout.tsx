@@ -9,7 +9,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section >
           <Header/>
           {children}
     </section>

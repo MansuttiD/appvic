@@ -83,7 +83,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <section className="bg-[#FFFAFF] ">
+    <section className="bg-general_backgound ">
       <div className="p-4 flex justify-center items-center min-h-[calc(100vh-70px)] md:min-h-[calc(100vh-100px)]">
         <div className="p-7 m-4 shadow-lg rounded-2xl bg-white sm:min-w-[500px] lg:min-w-[900px]">
           <div className="flex flex-col justify-center align-middle text-center">

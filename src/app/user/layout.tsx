@@ -9,7 +9,7 @@ export default function UserLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className='bg-general_backgound'>
           <Header/>
           {children}
     </section>
