@@ -1,15 +1,35 @@
 'use client';
+import BankAccountForm from '@/components/pli/BankAccountForm';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+
+const MySwal = withReactContent(Swal)
 
 export default function BankAccounts() {
+
+  const openSweetAlert = () => {
+    MySwal.fire({
+      html: <BankAccountForm/>, // Renderiza tu formulario dentro de SweetAlert
+      showCancelButton: false,
+      showConfirmButton: false,
+    });
+  };
+
+
   return (
-    <section className=" h-screen pt-5 sm:pt-11">
+    <section className="h-screen pt-5 sm:pt-11">
       <div className="text-soft_blue mx-auto max-w-sm sm:max-w-6xl">
         <h1 className="text-xl font-semibold mb-5 sm:mb-10">
           Gestor de cuentas
         </h1>
-        <div className="sm:hidden">
-          <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4 mb-2">
+
+        <section className='bg-white shadow-sm'>
+
+
+        <div className="sm:hidden ">
+          <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4 mb-2 ">
             <thead>
               <tr className="h-full grid grid-rows-5 justify-evenly">
                 <th className="text-start">Banco</th>
@@ -55,8 +75,12 @@ export default function BankAccounts() {
           </table>
         </div>
 
+
+        </section>
+
+
         <div className="mt-3">
-          <button className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-3 sm:w-fit px-6">
+          <button onClick={openSweetAlert} className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-3 sm:w-fit px-6">
             Añadir Cuenta
           </button>
         </div>
