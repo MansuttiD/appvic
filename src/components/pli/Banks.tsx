@@ -16,19 +16,17 @@ export default function Banks() {
 
   return (
     <section className=" mb-7 px-5 w-full max-w-[335px]">
-      <h2 className="text-soft_blue font-semibold text-md mb-2">
+      <h2 className="text-soft_blue font-semibold text-md mdl:mb-8">
         Pares de intercamibio
       </h2>
-      <div>
+      <div className='felx flex-col'>
         <div
-          className={`transition-all duration-500 ${
-            bankActive ? 'h-full' : 'h-[70px]'
-          } flex flex-col  gap-2 mx-auto min-w-[212px] max-w-[289px] overflow-y-hidden mb-2`}
+          className="flex flex-col gap-2 mx-auto min-w-[212px] max-w-[289px] mb-2"
         >
           <div
-            className={`transition-all duration-500 ${
-              bankActive ? 'h-full' : 'h-[70px]'
-            } grid grid-cols-1  p-4 blue_gradient-2 shadow-faqbox  rounded-[25px]`}
+            className={`transition-all duration-1000  ${
+              bankActive ? '' : 'h-[70px]'
+            } grid grid-cols-1 overflow-y-hidden  p-4 blue_gradient-2  rounded-[25px]`}
           >
             <div className="grid  mb-7 grid-cols-5">
               <div className="flex col-start-1 col-end-5 gap-5 items-center">
@@ -39,7 +37,7 @@ export default function Banks() {
               </div>
               <img
                 onClick={() => handleOpenBankActive(1)}
-                className={`${
+                className={` ${
                   bankActive ? 'hidden' : ''
                 } text-[#ffffff] text-[22px] justify-self-end self-center`}
                 src="\images\pli\arrowDawn.svg"
@@ -47,7 +45,7 @@ export default function Banks() {
               />
               <img
                 onClick={handleCloseBankActive}
-                className={`${
+                className={` ${
                   bankActive ? '' : 'hidden'
                 } text-[#ffffff] text-[22px] justify-self-end self-center`}
                 src="\images\pli\arrowUp.svg"
@@ -61,14 +59,14 @@ export default function Banks() {
               <li>TD</li>
             </ul>
           </div>
-          <div className="grid grid-cols-5 blue_gradient-2  text-white rounded-[18px] py-2 px-4 mb-1">
+          <div className={`overflow-y-hidden transition-all duration-300 ${bankActive ? 'py-2 px-4 mb-1' : 'h-0' }   grid grid-cols-5 blue_gradient-2  text-white rounded-[18px]`}>
             <p>Buy</p>
             <p>0.00</p>
             <p>0</p>
             <p>15</p>
             <BiDotsVerticalRounded className="text-white text-[18px] justify-self-end self-center" />
           </div>
-          <div className="grid grid-cols-5 bg-white text-blue_500  rounded-[18px] py-2 px-4 ">
+          <div className={`overflow-y-hidden transition-all duration-300 ${bankActive ? 'py-2 px-4' : 'h-0' } grid grid-cols-5 bg-white text-blue_500  rounded-[18px]  `}>
             <p>Buy</p>
             <p>0.00</p>
             <p>0</p>
