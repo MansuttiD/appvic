@@ -1,5 +1,6 @@
 'use client';
 
+import { Select, SelectItem } from '@nextui-org/select';
 import { useState } from 'react';
 
 const ExecutionPanel = () => {
@@ -12,6 +13,13 @@ const ExecutionPanel = () => {
   const handleCloseExecutionPanel = () => {
     setExecutionPanelActive(null);
   };
+
+
+  const options = [
+    { value: 'ID de Usuario', label: 'ID de Usuario' },
+    { value: 'N° de Transacción', label: 'N° de Transacción' },
+    { value: 'N° de ID', label: 'N° de ID' }
+  ]
 
   return (
     <div className="col-span-full row-span-2 max-w-[350px] mx-auto sm:max-w-3xl sm:mx-0">
@@ -29,17 +37,23 @@ const ExecutionPanel = () => {
             type="text"
             placeholder="Buscar"
           />
-          <select className="blue_gradient-2 px-6 py-1 rounded-full text-base text-white select-opt">
-            <option className="text-[#8C909A]" value="">
-              ID de Usuario
-            </option>
-            <option className="text-[#8C909A]" value="">
-              N° de Transacción
-            </option>
-            <option className="text-[#8C909A]" value="">
-              N° ID
-            </option>
-          </select>
+                <Select
+                aria-label="Selecciona una opción"
+                radius='full'
+                items={options}
+                classNames={{
+                  trigger:'blue_gradient flex flex-row justify-between items-center text-white  ',
+                  listbox:'text-[#8C909A] border-solid border-[1px]  border-blue_500 rounded-md bg-white ',
+                }}
+                placeholder='Select'>
+                  {
+                    options.map(option=>(
+                      <SelectItem 
+                      key={option.value} 
+                      value={option.value}>{option.label}</SelectItem>
+                    ))
+                  }
+                </Select>
         </div>
       </header>
       <section className="flex flex-col gap-3">
