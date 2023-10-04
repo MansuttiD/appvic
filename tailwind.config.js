@@ -48,7 +48,7 @@ module.exports = {
         soft_blue: '#242C41',
         white: '#FFFFFF',
         black_footer: '#232233',
-        general_backgound: '#FFFAFF',
+        general_backgound: '#FAFAFF',
         grey_light:'#F8F8F6',
         grey_medium:'#8F99A9'
       },

@@ -26,7 +26,7 @@ export default function BankAccounts() {
           Gestor de cuentas
         </h1>
 
-        <section className="bg-white shadow-sm">
+        <section className="">
           <div className="sm:hidden ">
             <table className="bg-white rounded-3xl grid grid-cols-[2fr,2fr,1fr] px-6 py-4 mb-2 ">
               <thead>
