@@ -12,6 +12,10 @@ export default function BankAccounts() {
       html: <BankAccountForm />, // Renderiza tu formulario dentro de SweetAlert
       showCancelButton: false,
       showConfirmButton: false,
+      width: 832,
+      customClass: {
+        popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
+      },
     });
   };
 
