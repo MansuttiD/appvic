@@ -1,4 +1,3 @@
-
 import HeaderPli from '@/components/shared/HeaderPli';
 import '../globals.css';
 
