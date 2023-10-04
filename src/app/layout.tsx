@@ -1,9 +1,12 @@
 import { ApolloWrapper } from '@/libs/client';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({ 
+  subsets: ["latin"],
+weight:['400'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,7 +22,7 @@ export default function PliLayout({
 }) {
   return (
     <html lang="es">
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body suppressHydrationWarning={true} className={poppins.className}>
         <ApolloWrapper>
           {/* {showHeader && <Header />}{' '} */}
           {/* Mostrar el encabezado si showHeader es true */}
