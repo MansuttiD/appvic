@@ -1,5 +1,6 @@
 'use client';
 import BankAccountForm from '@/components/pli/BankAccountForm';
+import MyBankAccount from '@/components/pli/MyBankAccount';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -13,6 +14,19 @@ export default function BankAccounts() {
       showCancelButton: false,
       showConfirmButton: false,
       width: 832,
+      customClass: {
+        popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
+      },
+    });
+  };
+
+  const openSweetAlertBanks = () => {
+    MySwal.fire({
+      html: <MyBankAccount />, // Renderiza tu formulario dentro de SweetAlert
+      showCancelButton: false,
+      showConfirmButton: false,
+      showCloseButton: false,
+      width: 600,
       customClass: {
         popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
       },
@@ -68,7 +82,7 @@ export default function BankAccounts() {
                   <td>Vender</td>
                   <td>$880</td>
                   <td>Aprobada</td>
-                  <BiDotsVerticalRounded className="text-[#D9D9D9] text-xl justify-self-end " />
+                  <BiDotsVerticalRounded onClick={openSweetAlertBanks} className="text-[#D9D9D9] text-xl justify-self-end " />
                 </tr>
               </tbody>
             </table>
