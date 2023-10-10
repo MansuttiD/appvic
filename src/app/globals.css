@@ -52,3 +52,17 @@ html {
     }
 }
 
+.bgalertbutton{
+    padding-right: 9rem;
+    padding-left: 9rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background: linear-gradient(180deg, #49A0F9 0%, #1277DD 100%), #FFF ;
+    border-radius: 22px;
+    border: none;
+    color: white;
+}
+
+
+
+

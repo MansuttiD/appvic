@@ -1,5 +1,7 @@
 'use client';
 import { GRAPHQL } from '@/app/models/graphql';
+
+import ThanksMessageForm from '@/components/pli/ThanksMessageForm';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -10,6 +12,8 @@ import { FaRegEyeSlash, FaUserAlt } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { GrMail } from 'react-icons/gr';
 import { SiKeycdn } from 'react-icons/si';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import phonecode from '../../../libs/phonecode.json';
 
 interface FormData {
@@ -22,6 +26,20 @@ interface FormData {
   lastname: string;
   confirmpassword: string;
 }
+
+const MySwal = withReactContent(Swal);
+
+const ThanksMessage = () => {
+  MySwal.fire({
+    html: <ThanksMessageForm />, // Renderiza tu formulario dentro de SweetAlert
+    showCancelButton: false,
+    showConfirmButton: false,
+    width: 832,
+    customClass: {
+      popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
+    },
+  });
+};
 
 export default function RegisterForm() {
   const {
@@ -386,6 +404,7 @@ export default function RegisterForm() {
               
 
               <button
+              onClick={ThanksMessage}
                 className="mb-8 w-full py-3 rounded-2xl font-semibold text-[18px] text-white bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-500 hover:bg-gradient-to-tl hover:from-blue-500 hover:via-blue-400 hover:to-blue-400 transition duration-300 transform hover:-translate-y-1"
                 type="submit"
               >

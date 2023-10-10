@@ -50,13 +50,14 @@ module.exports = {
         black_footer: '#232233',
         general_backgound: '#FAFAFF',
         grey_light:'#F8F8F6',
-        grey_medium:'#8F99A9'
+        grey_medium:'#8F99A9',
+        popup_text: '#696969'
       },
       boxShadow: {
         button: '0 10px 40px -15px RGBA(18, 119, 221, 0.7)',
         paymentbox: '0 10px 40px -15px rgba(14, 76, 139, 0.25)',
         faqbox: '0px 10px 40px -15px rgba(14, 76, 139, 0.25)',
-        dadada: '0px 3px 17px 3px rgba(0,0,0,0.07)',
+        shadowBanks: '0px 10px 40px 0px rgba(0, 0, 0, 0.05)',
       },
       backgroundImage: {
         wavedownload: 'url(/assets/img/home/wavedownload.svg)',

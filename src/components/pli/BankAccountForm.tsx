@@ -35,13 +35,26 @@ export default function BankAccountForm() {
 
   const onSubmit = (formData: FormData) => {
     console.log(formData);
-    Swal.close();
+    
+    Swal.fire({
+      title: '¡Gracias por enviar tus documentos!',
+      text: 'Sus documentos fueron recibidos satisfactoriamente, el estado de su cuenta será confirmado entre 24 y 48 horas hábiles.',
+      confirmButtonText: 'Confirmar',
+      buttonsStyling: false,
+      customClass: {
+        popup: 'rounded-[22px]',
+        confirmButton: 'blue_gradient text-white rounded-3xl px-36 py-3', // Clase CSS para el contenedor del popup
+      },
+    });
   };
 
 
   const closeButton = () => {
     Swal.close();
   }; 
+
+
+
   
   return (
     <section className="general_backgound mb-7 pt-5 flex flex-col gap-3.5">
