@@ -26,7 +26,7 @@ export default function LoginForm() {
   const onSubmit = async (formData: FormData) => {
     try {
       // Muestra la respuesta en la consola
-      console.log('Respuesta de la API GraphQL:', data);
+      console.log('Respuesta de la API GraphQL:', formData);
 
       // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
     } catch (error) {
@@ -46,7 +46,11 @@ export default function LoginForm() {
   };
 
 
-  const {data, loading, error} = useQuery(GRAPHQL.querys.SING_IN);
+  const {data} = useQuery(GRAPHQL.querys.SING_IN);
+
+  if (data) {
+console.log(data)
+  }
 
   return (
     <section className='bg-general_backgound' >

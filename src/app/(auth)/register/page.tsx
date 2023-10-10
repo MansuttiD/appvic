@@ -33,7 +33,6 @@ export default function RegisterForm() {
   } = useForm<FormData>();
 
   const onSubmit = async (formData: FormData) => {
-    console.log(formData.phone);
 
     try {
       const { data } = await createUser({
@@ -80,6 +79,10 @@ export default function RegisterForm() {
   }
   if (error) {
     console.log(error);
+  }
+
+  if (data) {
+    console.log(data)
   }
 
   return (

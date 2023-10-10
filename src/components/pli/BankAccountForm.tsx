@@ -21,7 +21,6 @@ export default function BankAccountForm() {
     handleSubmit,
     watch,
     control,
-    formState: { errors },
   } = useForm<FormData>();
 
 
