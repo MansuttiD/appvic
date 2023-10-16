@@ -1,6 +1,7 @@
 'use client';
 
 import { Select, SelectItem } from '@nextui-org/select';
+import Image from 'next/image';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -92,8 +93,8 @@ const ExecutionPanel = () => {
             executionPanelActive ? ' h-auto' : ' h-52'
           } sm:hidden bg-white px-2 rounded-3xl overflow-y-hidden`}
         >
-          <table>
-            <div className="grid grid-cols-[2fr,2fr,1fr] px-6 py-4 border-b-2 border-solid border-[#00000]">
+          <div>
+            <table className="grid grid-cols-[2fr,2fr,1fr] px-6 py-4 border-b-2 border-solid border-[#00000]">
               <thead>
                 <tr className="h-full flex flex-col justify-evenly gap-2 justify-items-center items-start">
                   <th>Tipo</th>
@@ -117,23 +118,31 @@ const ExecutionPanel = () => {
                   <td>880eUSD</td>
                 </tr>
               </tbody>
-              <div className="justify-self-end flex flex-col justify-between">
-                <img className="" src=".\images\pli\clock.svg" alt="" />
-                <img
+              <tfoot>
+              <tr>
+                <td className="justify-self-end flex flex-col justify-between">
+                <Image className="" src=".\images\pli\clock.svg" alt="" width={20} height={20} />
+                <Image
                   onClick={() => handleOpenExecutionPanel(1)}
                   className={executionPanelActive ? 'hidden' : ''}
                   src=".\images\pli\arrowDawn.svg"
                   alt=""
+                  width={15}
+                  height={16}
                 />
-                <img
+                <Image
                   onClick={handleCloseExecutionPanel}
                   className={executionPanelActive ? '' : 'hidden'}
                   src=".\images\pli\arrowUp.svg"
                   alt=""
+                  width={15}
+                  height={16}
                 />
-              </div>
-            </div>
-            <div className="pb-4">
+                </td>
+              </tr>
+              </tfoot>
+            </table>
+            <table className="pb-4">
               <tbody>
                 <tr className="grid grid-cols-2 gap-5 py-6 px-4  border-b-2 border-solid border-[#00000]">
                   <td className="flex flex-col">
@@ -167,9 +176,9 @@ const ExecutionPanel = () => {
                   </td>
                 </tr>
                 <tr className="grid grid-cols-2 gap-4  py-6 px-4 border-b-2 border-solid border-[#00000]">
-                  <h4 className=" text-md font-black col-span-full  w-full ">
+                  <th className=" text-md font-black col-span-full  w-full ">
                     Origen
-                  </h4>
+                  </th>
                   <td className="flex flex-col">
                     <span className="font-semibold">Nombre</span>Julian Zambrano
                   </td>
@@ -190,9 +199,9 @@ const ExecutionPanel = () => {
                   </td>
                 </tr>
                 <tr className="grid grid-cols-2 gap-4  py-6 px-4">
-                  <h4 className=" text-md font-black col-span-full  w-full ">
+                  <th className=" text-md font-black col-span-full  w-full ">
                     Destino
-                  </h4>
+                  </th>
                   <td className="flex flex-col">
                     <span className="font-semibold">Nombre</span>Julian Zambrano
                   </td>
@@ -212,7 +221,8 @@ const ExecutionPanel = () => {
                     1231234124134313212312
                   </td>
                 </tr>
-                <tr className="flex flex-col gap-4 px-4">
+                <tr>
+                  <td className="flex flex-col gap-4 px-4">
                   <button className="text-white blue_gradient-2 rounded-full py-[2px] px-5">
                     Confirmar
                   </button>
@@ -245,10 +255,11 @@ const ExecutionPanel = () => {
                       ))}
                     </Select>
                   </div>
+                  </td>
                 </tr>
               </tbody>
-            </div>
-          </table>
+            </table>
+          </div>
         </div>
         <div className="hidden sm:flex">
           <table className="flex flex-col w-full">
@@ -279,17 +290,21 @@ const ExecutionPanel = () => {
                   <span className="text-[#8F99A9] rounded-full bg-general_backgound px-6 py-1">
                     05:00
                   </span>
-                  <img
+                  <Image
                     onClick={handleCloseExecutionPanel}
                     className={`${executionPanelActive ? '' : 'hidden'}`}
                     src=".\images\pli\arrowUp.svg"
                     alt=""
+                    width={15}
+                    height={16}
                   />
-                  <img
+                  <Image
                     onClick={() => handleOpenExecutionPanel(1)}
                     className={`${executionPanelActive ? 'hidden' : ''}`}
                     src=".\images\pli\arrowDawn.svg"
                     alt=""
+                    width={15}
+                    height={16}
                   />
                 </td>
               </tr>
@@ -324,9 +339,9 @@ const ExecutionPanel = () => {
                 </td>
               </tr>
               <tr className="grid grid-cols-[1fr,1fr,1fr,1fr,2fr] gap-4 border-b-2 border-solid py-6 border-[#00000]">
-                <h4 className=" text-md font-black col-span-full  w-full ">
+                <th className=" text-md font-black col-span-full  w-full ">
                   Origen
-                </h4>
+                </th>
                 <td className="flex flex-col">
                   <span className="font-semibold">Nombre</span>Julian Zambrano
                 </td>
@@ -347,9 +362,9 @@ const ExecutionPanel = () => {
                 </td>
               </tr>
               <tr className="grid grid-cols-[1fr,1fr,1fr,1fr,2fr] gap-4 py-6 justify-between">
-                <h4 className=" text-md font-black  w-full col-span-full">
+                <th className=" text-md font-black  w-full col-span-full">
                   Destino
-                </h4>
+                </th>
                 <td className="flex flex-col">
                   <span className="font-semibold">Nombre</span>Julian Zambrano
                 </td>
@@ -370,7 +385,7 @@ const ExecutionPanel = () => {
                 </td>
               </tr>
               <tr className="flex flex-col gap-4">
-                <div>
+                <td>
                   <button
                     type="button"
                     onClick={handleReceivedDifferentAmountModal}
@@ -378,8 +393,8 @@ const ExecutionPanel = () => {
                   >
                     Recibí un monto distinto
                   </button>
-                </div>
-                <div className="flex gap-5 ">
+                </td>
+                <td className="flex gap-5 ">
                   <button className="text-white blue_gradient-2 rounded-full py-[2px] px-5">
                     Confirmar
                   </button>
@@ -409,7 +424,7 @@ const ExecutionPanel = () => {
                       ))}
                     </Select>
                   </div>
-                </div>
+                </td>
               </tr>
             </tbody>
           </table>

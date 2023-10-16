@@ -61,7 +61,13 @@ export default function BankAccounts() {
                   <td className="text-start">Aprobada</td>
                 </tr>
               </tbody>
+              <tfoot>
+                <tr>
+                  <td>
               <BiDotsVerticalRounded className="text-[#D9D9D9] text-xl justify-self-end" />
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           </div>
           <div className="hidden sm:flex">
@@ -82,7 +88,9 @@ export default function BankAccounts() {
                   <td>Vender</td>
                   <td>$880</td>
                   <td>Aprobada</td>
+                  <td>
                   <BiDotsVerticalRounded onClick={openSweetAlertBanks} className="text-[#D9D9D9] text-xl justify-self-end " />
+                  </td>
                 </tr>
               </tbody>
             </table>
