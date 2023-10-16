@@ -24,7 +24,7 @@ const Header = () => {
               width={180}
               height={180}
               alt="Logo Desktop"
-              className="hidden md:block"
+              className="hidden md:inline"
             />
           </Link>
 
@@ -35,7 +35,7 @@ const Header = () => {
               width={40}
               height={40}
               alt="Logo Mobile"
-              className="block md:hidden"
+              className="md:hidden"
             />
           </Link>
         </div>

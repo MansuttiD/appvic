@@ -1,7 +1,6 @@
-'use client';
-
+"use client";
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -11,9 +10,10 @@ const MySwal = withReactContent(Swal);
 
 export default function Banks() {
   const [bankActive, setBankActive] = useState(null);
+  const [sellMenuActive, setSellMenuActive] = useState(false);
+  const [buyMenuActive, setBuyMenuActive] = useState(false);
 
   const handleOpenBankActive = (id: any) => {
-    Swal.close();
     if (bankActive == id) {
       setBankActive(null);
     } else {
@@ -21,43 +21,51 @@ export default function Banks() {
     }
   };
 
-  const handleBuyMinMenu = () => {
-    MySwal.close();
-    MySwal.fire({
-      html: <BanksLittleMenu />,
-      target: '#conatinerBank1',
-      showCancelButton: false,
-      showConfirmButton: false,
-      width: 200,
-      backdrop: false,
-      timer: 15000,
-      position: 'bottom-end',
-      background: '#F8F8F6',
-      customClass: {
-        container:
-          'absolute bg-inherit sm:translate-x-2/3 translate-y-10 overflow-y-hidden',
-        popup: 'overflow-y-hidden',
-      },
-    });
-  };
+  useEffect(() => {
+    if (sellMenuActive) {
+      MySwal.close();
+      MySwal.fire({
+        html: <BanksLittleMenu />,
+        target: '#conatinerBank1',
+        showCancelButton: false,
+        showConfirmButton: false,
+        width: 200,
+        backdrop: false,
+        timer: 15000,
+        position: 'bottom-end',
+        background: '#F8F8F6',
+        customClass: {
+          container:
+            'absolute bg-inherit sm:translate-x-2/3 translate-y-10 overflow-y-hidden',
+          popup: 'overflow-y-hidden',
+        },
+      });
+      setSellMenuActive(false); // Restablece el estado después de abrir el menú
+    }
+  }, [sellMenuActive]);
 
-  const handleSellMinMenu = () => {
-    MySwal.close();
-    MySwal.fire({
-      html: <BanksLittleMenu />,
-      target: '#conatinerBank1',
-      showCancelButton: false,
-      showConfirmButton: false,
-      width: 200,
-      backdrop: false,
-      timer: 15000,
-      position: 'bottom-end',
-      background: '#F8F8F6',
-      customClass: {
-        container: 'absolute bg-inherit sm:translate-x-2/3 translate-y-[40%]',
-      },
-    });
-  };
+  useEffect(() => {
+    if (buyMenuActive) {
+      MySwal.close();
+      MySwal.fire({
+        html: <BanksLittleMenu />,
+        target: '#conatinerBank1',
+        showCancelButton: false,
+        showConfirmButton: false,
+        width: 200,
+        backdrop: false,
+        timer: 15000,
+        position: 'bottom-end',
+        background: '#F8F8F6',
+        customClass: {
+          container:
+            'absolute bg-inherit sm:translate-x-2/3 translate-y-10 overflow-y-hidden',
+          popup: 'overflow-y-hidden',
+        },
+      });
+      setBuyMenuActive(false); // Restablece el estado después de abrir el menú
+    }
+  }, [buyMenuActive]);
 
   return (
     <section className=" mb-7 px-0 w-full max-w-[350px] mx-auto md:px-5  md:max-w-[335px]">
@@ -98,12 +106,14 @@ export default function Banks() {
                   height={15} // Añade la altura de la imagen
                 />
               </div>
-              <img
+              <Image
                 className={` ${
                   bankActive ? '' : 'hidden'
-                } text-[#ffffff] text-[22px] justify-self-end self-center`}
+                } text-[#ffffff] justify-self-end self-center`}
                 src="\images\pli\arrowUp.svg"
                 alt="UP"
+                width={15}
+                height={16}
               />
             </div>
             <ul className="text-white font-semibold grid grid-cols-5 col-start-1 col-end-5 row-start-2 gap-2 row-end-3">
@@ -124,7 +134,7 @@ export default function Banks() {
             <p>15</p>
             <BiDotsVerticalRounded
               className="text-white text-[18px] justify-self-end self-center cursor-pointer"
-              onClick={handleBuyMinMenu}
+              onClick={() => setBuyMenuActive(true)}
             />
           </div>
           <div
@@ -137,7 +147,7 @@ export default function Banks() {
             <p>0</p>
             <p>4</p>
             <BiDotsVerticalRounded
-              onClick={handleSellMinMenu}
+              onClick={() => setSellMenuActive(true)}
               className="text-blue_500 text-[18px] justify-self-end self-center cursor-pointer"
             />
           </div>
@@ -146,3 +156,4 @@ export default function Banks() {
     </section>
   );
 }
+
