@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface FormData {
   pin1: string;
@@ -9,39 +9,45 @@ interface FormData {
 }
 
 export default function ThanksMessageForm() {
-  const { register, handleSubmit, watch } = useForm<FormData>();
-  const [showButton, setShowButton] = useState(['']);
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const { register, handleSubmit, watch, setFocus } = useForm<FormData>();
 
-  const pin1Ref = useRef<HTMLInputElement>(null);
-  const pin2Ref = useRef<HTMLInputElement>(null);
-  const pin3Ref = useRef<HTMLInputElement>(null);
-  const pin4Ref = useRef<HTMLInputElement>(null);
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
 
+  const pin1ValueReg = watch('pin1');
+  const pin2ValueReg = watch('pin2');
+  const pin3ValueReg = watch('pin3');
+  const pin4ValueReg = watch('pin4');
 
+  useEffect(() => {
+    setFocus('pin1');
+  }, []);
 
-  const handleKeyUp = (
-    prevField:React.RefObject<HTMLInputElement>,
-    actualField: React.RefObject<HTMLInputElement>,
-    nextField: React.RefObject<HTMLInputElement>
-  ) => {
-    if (actualField.current && actualField.current.value.length == 1) {
-      if (actualField.current.name == 'pin1') {
-        setShowButton(['pin1'])
-      } else if (actualField.current.name == 'pin2') {
-        setShowButton(['pin1','pin2'])
-      } else if (actualField.current.name == 'pin3') {
-        setShowButton(['pin1','pin2','pin3'])
-      } else if (actualField.current.name == 'pin4') {
-        setShowButton(['pin1','pin2','pin3','pin4'])
+  const handleKeyUp = (e: any) => {
+    if (e.code == 'Backspace') {
+      if (e.target.value.length == 0 && e.target.name == 'pin4') {
+        setFocus('pin3');
       }
-
-      if (nextField.current) {
-        nextField.current.focus();
+      if (e.target.value.length == 0 && e.target.name == 'pin3') {
+        setFocus('pin2');
+      }
+      if (e.target.value.length == 0 && e.target.name == 'pin2') {
+        setFocus('pin1');
+      }
+    } else {
+      if (e.target.value.length > 0 && e.target.name == 'pin1') {
+        setFocus('pin2');
+      }
+      if (e.target.value.length > 0 && e.target.name == 'pin2') {
+        setFocus('pin3');
+      }
+      if (e.target.value.length > 0 && e.target.name == 'pin3') {
+        setFocus('pin4');
       }
     }
   };
-  
+
   return (
     <div className="flex flex-col gap-7">
       <h4 className="flex justify-start font-black text-soft_blue">
@@ -56,8 +62,7 @@ export default function ThanksMessageForm() {
             pattern="[0-9]*"
             maxLength={1}
             className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
-            ref={pin1Ref}
-            onKeyUp={() => handleKeyUp(pin1Ref,pin1Ref, pin2Ref)}
+            onKeyUp={handleKeyUp}
           />
           <input
             {...register('pin2')}
@@ -66,9 +71,7 @@ export default function ThanksMessageForm() {
             pattern="[0-9]*"
             maxLength={1}
             className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
-            ref={pin2Ref}
-            onKeyUp={() => handleKeyUp(pin1Ref,pin2Ref, pin3Ref)}
-
+            onKeyUp={handleKeyUp}
           />
           <input
             {...register('pin3')}
@@ -77,8 +80,7 @@ export default function ThanksMessageForm() {
             pattern="[0-9]*"
             maxLength={1}
             className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
-            ref={pin3Ref}
-            onKeyUp={() => handleKeyUp(pin2Ref,pin3Ref, pin4Ref)}
+            onKeyUp={handleKeyUp}
           />
           <input
             {...register('pin4')}
@@ -87,8 +89,7 @@ export default function ThanksMessageForm() {
             pattern="[0-9]*"
             maxLength={1}
             className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
-            ref={pin4Ref}
-            onKeyUp={() => handleKeyUp(pin3Ref,pin4Ref, pin4Ref)}
+            onKeyUp={handleKeyUp}
           />
         </div>
         <section className="flex justify-start gap-6">
@@ -98,7 +99,9 @@ export default function ThanksMessageForm() {
 
           <button
             className={`blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6 ${
-              showButton[0] && showButton[1] && showButton[2] && showButton[3] ? '' : 'hidden'
+              pin1ValueReg && pin2ValueReg && pin3ValueReg && pin4ValueReg
+                ? ''
+                : 'hidden'
             }`}
           >
             Confirmar Pin
