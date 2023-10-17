@@ -1,7 +1,7 @@
 'use client';
 import { GRAPHQL } from '@/app/models/graphql';
 
-import ThanksMessageForm from '@/components/pli/ThanksMessageForm';
+import ThanksMessageForm from '@/components/register/ThanksMessageForm';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -90,18 +90,8 @@ export default function RegisterForm() {
     setPasswordSingUp('text');
   };
 
-  const [createUser, { data, loading, error }] = useMutation(GRAPHQL.mutation.CREATE_USER);
+  const [createUser, { data }] = useMutation(GRAPHQL.mutation.CREATE_USER);
 
-  if (loading) {
-    return <h2>Cargando...</h2>;
-  }
-  if (error) {
-    console.log(error);
-  }
-
-  if (data) {
-    console.log(data)
-  }
 
   return (
     <section className="bg-general_backgound ">

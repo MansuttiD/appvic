@@ -1,5 +1,5 @@
 'use client';
-import PinModal from '@/components/pli/PinModal';
+import PinModal from '@/components/register/PinModal';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
