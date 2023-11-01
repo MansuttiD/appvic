@@ -50,6 +50,19 @@ html {
     .menu-inactive {
         @apply transform -translate-y-96 right-6 md:translate-y-0;
     }
+
+    /*Settings*/
+    .settings-options-white {
+        @apply flex justify-between items-center px-6 py-[18px] text-soft_blue rounded-3xl shadow-md text-normal;
+    }
+
+    .settings-options-blue{
+        @apply flex justify-between blue_gradient items-center px-6 py-[18px] text-white rounded-3xl shadow-md text-normal;
+    }
+    
+    .select-placeholder {
+        font-weight: 700 !important;
+      }
 }
 
 .bgalertbutton{

@@ -54,7 +54,7 @@ const Header = () => {
               <Link href="/register">Registrate</Link>
             </li>
             <li>
-              <Link href="/#">Soporte</Link>
+              <Link href="/settings">Soporte</Link>
             </li>
             <li>
               <Link href="/"><HiOutlineUserCircle className="text-xl"/></Link>
