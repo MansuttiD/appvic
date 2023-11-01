@@ -1,27 +1,23 @@
 'use client';
 
 import BankAccountRercharge from '@/components/recharge/BankAccountRecharge';
-import SectionBank from '@/components/recharge/SectionBank';
-import SectionCancelPli from '@/components/recharge/SectionCancelPli';
-import SectionCancelTransaction from '@/components/recharge/SectionCancelTransection';
-import SectionCounts from '@/components/recharge/SectionCounts';
-import SectionTransaction from '@/components/recharge/SectionTransaction';
 import PinModalRecharge from '@/components/sharedRechargeWithdraw/PinModalRecharge';
+import SectionBankW from '@/components/withdraw/SectionBankW';
+import SectionCountsW from '@/components/withdraw/SectionCountsW';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-export default function Recharge() {
+export default function Withdraw() {
   const [currency, setCurrency] = useState('');
   const [bankActive, setBankActive] = useState('');
   const [confirmBank, setConfirmBank] = useState(false);
-  const [nameInCount, setNameInCount] = useState('');
-  const [confirmCount, setConfirmCount] = useState(false);
-  const [confirmPin, setConfirmPin] = useState('');
   const [cancelTransaction, setCancelTransaction] = useState(false);
   const [finishTransaction, setFinishTransaction] = useState(false);
-
+  const [confirmCount, setConfirmCount] = useState(false);
+  const [nameInCount, setNameInCount] = useState('');
+  const [confirmPin, setConfirmPin] = useState('');
 
   const router = useRouter();
 
@@ -45,6 +41,18 @@ export default function Recharge() {
 
   const handleConfirmBank = () => {
     setConfirmBank(!confirmBank);
+  };
+
+  const handleBankAccount = () => {
+    MySwal.fire({
+      html: <BankAccountRercharge />,
+      showCancelButton: false,
+      showConfirmButton: false,
+      width: 832,
+      customClass: {
+        popup: 'rounded-[22px]',
+      },
+    });
   };
 
   const handleCancelReturn2 = () => {
@@ -73,18 +81,6 @@ export default function Recharge() {
     }
   };
 
-  const handleBankAccount = () => {
-    MySwal.fire({
-      html: <BankAccountRercharge />,
-      showCancelButton: false,
-      showConfirmButton: false,
-      width: 832,
-      customClass: {
-        popup: 'rounded-[22px]',
-      },
-    });
-  };
-
   const handleConfirmCount = () => {
     if (confirmPin) {
       setFinishTransaction(true);
@@ -95,21 +91,17 @@ export default function Recharge() {
             setConfirmPin={setConfirmPin}
             confirmPin={confirmPin}
           />
-        ), 
+        ),
         showCancelButton: false,
         showConfirmButton: false,
 
         customClass: {
-          popup: 'rounded-[22px] min-w-[250px] w-full max-w-[384px]', 
+          popup: 'rounded-[22px] min-w-[250px] w-full max-w-[384px]',
         },
       });
     } else {
       setConfirmCount(true);
     }
-  };
-
-  const handleReturnToHome = () => {
-    router.push('./');
   };
 
   const senderInfo = {
@@ -126,13 +118,9 @@ export default function Recharge() {
     <section className="min-h-screen p-3 max-w-7xl mx-auto ">
       <div className="flex flex-col">
         <h2 className="text-[40px] font-medium text-soft_blue mb-7 mt-11">
-          {finishTransaction
-            ? '¡Todo luce bien!'
-            : cancelTransaction
-            ? 'Transaccion Cancelada'
-            : 'Cargar'}
+          Retirar
         </h2>
-        <SectionBank
+        <SectionBankW
           confirmBank={confirmBank}
           cancelTransaction={cancelTransaction}
           currency={currency}
@@ -142,8 +130,7 @@ export default function Recharge() {
           handleCancelReturn={handleCancelReturn}
           handleConfirmBank={handleConfirmBank}
         />
-
-        <SectionCounts
+        <SectionCountsW
           confirmBank={confirmBank}
           cancelTransaction={cancelTransaction}
           finishTransaction={finishTransaction}
@@ -156,25 +143,6 @@ export default function Recharge() {
           sernderTransaction={sernderTransaction}
           handleCancelReturn2={handleCancelReturn2}
           handleConfirmCount={handleConfirmCount}
-        />
-
-        <SectionTransaction
-          finishTransaction={finishTransaction}
-          senderInfo={senderInfo}
-          handleReturnToHome={handleReturnToHome}
-        />
-
-        <SectionCancelTransaction
-          cancelTransaction={cancelTransaction}
-          confirmCount={confirmCount}
-          senderInfo={senderInfo}
-          sernderTransaction={sernderTransaction}
-          handleReturnToHome={handleReturnToHome}
-        />
-
-        <SectionCancelPli
-          handleCancelReturn={handleCancelReturn}
-          handleReturnToHome={handleReturnToHome}
         />
       </div>
     </section>

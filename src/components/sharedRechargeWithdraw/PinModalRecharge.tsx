@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 interface FormData {
   pin1: string;
@@ -8,11 +9,20 @@ interface FormData {
   pin4: string;
 }
 
-export default function PinModal() {
+export default function PinModalRecharge({setConfirmPin,confirmPin}:any) {
   const { register, handleSubmit, watch, setFocus } = useForm<FormData>();
 
+
+
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    if (data.pin1 == '1' && data.pin2 == '2' && data.pin3 == '3' && data.pin4 == '4') {
+         setConfirmPin('correct')
+         Swal.close()
+    }else{
+
+      setConfirmPin('incorrect')
+    }
+ 
   };
 
   const pin1ValueReg = watch('pin1');
@@ -48,6 +58,11 @@ export default function PinModal() {
     }
   };
 
+  const hanldeClosePinModal=()=>{
+    Swal.close()
+  }
+
+
   return (
     <div className="flex flex-col gap-7">
       <h4 className="flex justify-start font-black text-soft_blue">
@@ -61,7 +76,7 @@ export default function PinModal() {
             inputMode="numeric"
             pattern="[0-9]*"
             maxLength={1}
-            className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
+            className={`${confirmPin == 'incorrect' ? 'border-[#BA0000]' : 'appearance-none '} w-10 h-10  outline-none  bg-transparent border-2 border-solid rounded-md text-center`}
             onKeyUp={handleKeyUp}
           />
           <input
@@ -70,7 +85,7 @@ export default function PinModal() {
             inputMode="numeric"
             pattern="[0-9]*"
             maxLength={1}
-            className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
+            className={`${confirmPin == 'incorrect' ? 'border-[#BA0000]' : 'appearance-none'} w-10 h-10  outline-none bg-transparent border-2 border-solid rounded-md text-center`}
             onKeyUp={handleKeyUp}
           />
           <input
@@ -79,7 +94,7 @@ export default function PinModal() {
             inputMode="numeric"
             pattern="[0-9]*"
             maxLength={1}
-            className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
+            className={`${confirmPin == 'incorrect' ? 'border-[#BA0000]' : 'appearance-none'} w-10 h-10  outline-none bg-transparent border-2 border-solid rounded-md text-center`}
             onKeyUp={handleKeyUp}
           />
           <input
@@ -88,16 +103,21 @@ export default function PinModal() {
             inputMode="numeric"
             pattern="[0-9]*"
             maxLength={1}
-            className="w-10 h-10 appearance-none outline-none bg-transparent border-2 rounded-md text-center"
+            className={`${confirmPin == 'incorrect' ? 'border-[#BA0000]' : 'appearance-none'} w-10 h-10  outline-none bg-transparent border-2 border-solid rounded-md text-center`}
             onKeyUp={handleKeyUp}
           />
         </div>
+        <p className='text-base'>¿No recuerdas tu PIN? Haz click aquí</p>
         <section className="flex justify-start gap-6">
-          <button className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6">
+          <button
+          type='button'
+          onClick={hanldeClosePinModal}
+          className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6">
             Regresar
           </button>
 
           <button
+          type='submit'
             className={`blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6 ${
               pin1ValueReg && pin2ValueReg && pin3ValueReg && pin4ValueReg
                 ? ''

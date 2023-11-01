@@ -50,6 +50,7 @@ module.exports = {
         black_footer: '#232233',
         general_backgound: '#FAFAFF',
         grey_light:'#F8F8F6',
+        grey_button:'#808080',
         grey_medium:'#8F99A9',
         popup_text: '#696969'
       },

@@ -1,0 +1,11 @@
+[
+    {
+      "value": "No coincide el número de referencia.",
+      "label": "No coincide el número de referencia."
+    },
+    {
+      "value": "Transacción no Encontrada.",
+      "label": "Transacción no Encontrada."
+    },
+    { "value": "Identificación inválida", "label": "Identificación inválida" }
+  ]

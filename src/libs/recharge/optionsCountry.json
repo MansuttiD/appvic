@@ -1,0 +1,32 @@
+[
+    {
+      "value": "COP",
+      "label": "Peso Colombiano",
+      "img": "./images/recharge/ellipse-44.svg"
+    },
+    {
+      "value": "ARS",
+      "label": "Peso Argentino",
+      "img": "./images/recharge/ellipse-44.svg"
+    },
+    {
+      "value": "PEN",
+      "label": "Sol Peruano",
+      "img": "./images/recharge/ellipse-44.svg"
+    },
+    {
+      "value": "Bs.D",
+      "label": "Bolívar Digital",
+      "img": "./images/recharge/ellipse-44.svg"
+    },
+    {
+      "value": "USD",
+      "label": "Dólar Americano",
+      "img": "./images/recharge/ellipse-44.svg"
+    },
+    {
+      "value": "USDT",
+      "label": "Stablecoin",
+      "img": "./images/recharge/ellipse-44.svg"
+    }
+  ]

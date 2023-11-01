@@ -1,0 +1,26 @@
+[
+    {
+        "id":"1",
+        "name":"BNC",
+        "quantity":"32,58",
+        "coin":"Bs.D"
+    },
+    {
+        "id":"2",
+        "name":"Provincial",
+        "quantity":"33",
+        "coin":"Bs.D"
+    },    {
+        "id":"3",
+        "name":"Bancamiga",
+        "quantity":"35,30",
+        "coin":"Bs.D"
+    }
+    ,    {
+        "id":"4",
+        "name":"Banco de Venezuela",
+        "quantity":"55,50",
+        "coin":"Bs.D"
+    }
+
+]

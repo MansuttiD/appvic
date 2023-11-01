@@ -1,7 +1,7 @@
 'use client';
-import PinModal from '@/components/register/PinModal';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import PinModal from './PinModal';
 
 const MySwal = withReactContent(Swal);
 
