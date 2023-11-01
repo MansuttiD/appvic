@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/libs/client.tsx"
-  ],
+, "src/app/(user)/settings/userbanks"  ],
   "exclude": ["node_modules"]
 }
