@@ -1,18 +1,63 @@
+'use client';
+
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-interface FormData {
+interface FormDataPin {
   pin1: string;
   pin2: string;
   pin3: string;
   pin4: string;
 }
 
-export default function PinModal() {
-  const { register, handleSubmit, watch, setFocus } = useForm<FormData>();
+interface FormDataRegister {
+  dataRegister: {
+    userName: string;
+    password: string;
+    name: string;
+    phone: number;
+    email: string;
+    countrycode: string;
+    lastname: string;
+    confirmpassword: string;
+  };
+}
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+export default function PinModal({ dataRegister, createUser }: any) {
+  const { register, handleSubmit, watch, setFocus } = useForm<FormDataPin>();
+  const onSubmit = async (dataPin: FormDataPin) => {
+
+    try {
+      const { data } = await createUser({
+        variables: {
+          input: {
+            profile: {
+              firstName: dataRegister.name,
+              lastName: dataRegister.lastname,
+              phoneNumber: dataRegister.phone.toString(),
+            },
+            user: {
+              email: dataRegister.email,
+              password: dataRegister.password,
+              pin:
+                dataPin.pin1.toString() +
+                dataPin.pin2.toString() +
+                dataPin.pin3.toString() +
+                dataPin.pin4.toString(),
+              userName: dataRegister.userName,
+            },
+          },
+        },
+      });
+
+      // Muestra la respuesta en la consola
+      console.log('Respuesta de la API GraphQL:', data);
+
+      // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
+    } catch (error) {
+      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
+      console.error('Error al llamar a la API GraphQL:', error);
+    }
   };
 
   const pin1ValueReg = watch('pin1');
@@ -93,11 +138,15 @@ export default function PinModal() {
           />
         </div>
         <section className="flex justify-start gap-6">
-          <button className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6">
+          <button
+            type="button"
+            className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6"
+          >
             Regresar
           </button>
 
           <button
+            type="submit"
             className={`blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6 ${
               pin1ValueReg && pin2ValueReg && pin3ValueReg && pin4ValueReg
                 ? ''

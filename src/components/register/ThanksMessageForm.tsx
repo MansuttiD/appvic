@@ -1,21 +1,12 @@
 'use client';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import PinModal from './PinModal';
 
 const MySwal = withReactContent(Swal);
 
 const PinModalPopup = () => {
 
-  MySwal.fire({
-    html: <PinModal />, // Renderiza tu formulario dentro de SweetAlert
-    showCancelButton: false,
-    showConfirmButton: false,
 
-    customClass: {
-      popup: 'rounded-[22px] w-[300px]', // Clase CSS para el contenedor del popup
-    },
-  });
 };
 
 export default function ThanksMessageForm() {

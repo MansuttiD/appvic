@@ -1,6 +1,7 @@
 'use client';
-import { GRAPHQL } from '@/app/models/graphql';
 
+import { GRAPHQL } from '@/app/models/graphql';
+import PinModal from '@/components/register/PinModal';
 import ThanksMessageForm from '@/components/register/ThanksMessageForm';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
@@ -25,11 +26,12 @@ interface FormData {
   countrycode: string;
   lastname: string;
   confirmpassword: string;
+  pin:number;
 }
 
 const MySwal = withReactContent(Swal);
 
-const ThanksMessage = () => {
+const ThanksMessagePopUp=()=>{
   MySwal.fire({
     html: <ThanksMessageForm />, // Renderiza tu formulario dentro de SweetAlert
     showCancelButton: false,
@@ -39,7 +41,7 @@ const ThanksMessage = () => {
       popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
     },
   });
-};
+}
 
 export default function RegisterForm() {
   const {
@@ -49,34 +51,23 @@ export default function RegisterForm() {
     // reset,
     formState: { errors },
   } = useForm<FormData>();
+  
+  const [createUser, { data }] = useMutation(GRAPHQL.mutation.CREATE_USER);
 
-  const onSubmit = async (formData: FormData) => {
+  const password = watch('password')
+  const confirmpassword= watch('confirmpassword')
 
-    try {
-      const { data } = await createUser({
-        variables: {
-          input: {
-            user:{
-              email:formData.email,
-              password:formData.password,
-              userName:formData.userName,
-            },
-            profile:{
-              firstName:formData.name,
-              lastName:formData.lastname,
-              phoneNumber:formData.countrycode + formData.phone.toString()
-            }
-          }
-        },
-      });
+  const onSubmit = (formData: FormData) => {
 
-      // Muestra la respuesta en la consola
-      console.log('Respuesta de la API GraphQL:', data);
-
-      // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
-    } catch (error) {
-      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
-      console.error('Error al llamar a la API GraphQL:', error);
+  if (password === confirmpassword) {
+          MySwal.fire({
+      html: <PinModal dataRegister={formData} createUser={createUser} />, // Renderiza tu formulario dentro de SweetAlert
+      showCancelButton: false,
+      showConfirmButton: false,
+      customClass: {
+        popup: 'rounded-[22px] w-[300px]', // Clase CSS para el contenedor del popup
+      },
+    });
     }
   };
 
@@ -90,7 +81,7 @@ export default function RegisterForm() {
     setPasswordSingUp('text');
   };
 
-  const [createUser, { data }] = useMutation(GRAPHQL.mutation.CREATE_USER);
+  // const [createUser, { data }] = useMutation(GRAPHQL.mutation.CREATE_USER);
 
 
   return (
@@ -397,7 +388,7 @@ export default function RegisterForm() {
               
 
               <button
-              onClick={ThanksMessage}
+              onClick={handleSubmit(onSubmit)}
                 className="mb-8 w-full py-3 rounded-2xl font-semibold text-[18px] text-white bg-gradient-to-tl from-blue-400 via-blue-500 to-blue-500 hover:bg-gradient-to-tl hover:from-blue-500 hover:via-blue-400 hover:to-blue-400 transition duration-300 transform hover:-translate-y-1"
                 type="submit"
               >

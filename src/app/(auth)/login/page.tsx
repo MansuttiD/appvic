@@ -1,7 +1,9 @@
 'use client';
 import { GRAPHQL } from '@/app/models/graphql';
 import { useQuery } from '@apollo/experimental-nextjs-app-support/ssr';
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye } from 'react-icons/ai';
@@ -17,25 +19,35 @@ interface FormData {
 }
 
 export default function LoginForm() {
+  const [passwordSingUp, setPasswordSingUp] = useState('password');
+  const { refetch } = useQuery(GRAPHQL.querys.SING_IN, { skip: true });
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
+  const router = useRouter();
+
   const onSubmit = async (formData: FormData) => {
-    try {
-      // Muestra la respuesta en la consola
-      console.log('Respuesta de la API GraphQL:', formData);
+    const { data, loading, error } = await refetch({
+      input: {
+        email: formData.user,
+        password: formData.password,
+      },
+    });
 
-      // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
-    } catch (error) {
-      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
-      console.error('Error al llamar a la API GraphQL:', error);
+    if (data) {
+      Cookies.set('tokenSereno', data.signIn.token);
+      router.push('./')
     }
+    if (error) {
+      console.log(error);
+    }
+    // .then((data) => {
+    //   })
+    // .catch((err) => {});
   };
-
-  const [passwordSingUp, setPasswordSingUp] = useState('password');
 
   const handlePasswordSingUp = () => {
     setPasswordSingUp('password');
@@ -45,15 +57,8 @@ export default function LoginForm() {
     setPasswordSingUp('text');
   };
 
-
-  const {data} = useQuery(GRAPHQL.querys.SING_IN);
-
-  if (data) {
-console.log(data)
-  }
-
   return (
-    <section className='bg-general_backgound' >
+    <section className="bg-general_backgound">
       <div className="p-4 flex justify-center items-center min-h-[calc(100vh-70px)] md:min-h-[calc(100vh-100px)]">
         <div className="p-7 m-4 shadow-lg rounded-2xl bg-white sm:min-w-[600px] lg:min-w-[900px]">
           <div className="flex flex-col justify-center align-middle text-center">
@@ -81,10 +86,14 @@ console.log(data)
                 />
               </div>
               {errors.user && (
-                <span style={{ 
-                  color: 'red',
-                  fontSize: '12px',
-                }}>{errors.user.message}</span>
+                <span
+                  style={{
+                    color: 'red',
+                    fontSize: '12px',
+                  }}
+                >
+                  {errors.user.message}
+                </span>
               )}
             </div>
             <div className="mb-4 flex flex-col">
@@ -116,10 +125,14 @@ console.log(data)
                 />
               </div>
               {errors.password && (
-                <span style={{ 
-                  color: 'red',
-                  fontSize: '12px',
-              }}>{errors.password.message}</span>
+                <span
+                  style={{
+                    color: 'red',
+                    fontSize: '12px',
+                  }}
+                >
+                  {errors.password.message}
+                </span>
               )}
             </div>
 
