@@ -3,12 +3,17 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
     let jwt = request.cookies.get('tokenSereno');
-    console.log(jwt)
-    if (jwt == undefined) {
-      return NextResponse.redirect(new URL('/login', request.url));
+    if (request.nextUrl.pathname.startsWith('/login')||request.nextUrl.pathname.startsWith('/register') ) {
+      if (jwt) {
+        return NextResponse.redirect(new URL('/', request.url));
+      }
+    }else{
+      if (jwt == undefined) {
+        return NextResponse.redirect(new URL('/login', request.url));
+      }
     }
   }
 
   export const config = {
-  matcher: ['/pli(/.*)?'],
+  matcher: '/(.*)?',
 };
