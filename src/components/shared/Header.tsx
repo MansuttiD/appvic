@@ -13,6 +13,8 @@ const Header = () => {
     setMenuActive(!menuActive);
   };
 
+
+
   return (
     <header className="text-[18px] py-4 text-dark_blue overflow-x-hidden bg-white">
       <div className="flex justify-between items-center px-2 overflow-x-hidden max-w-xs mx-auto sm:max-w-xl md:max-w-[82rem] ">

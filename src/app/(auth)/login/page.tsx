@@ -12,6 +12,7 @@ import { FaRegEyeSlash, FaUserAlt } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { GrMail } from 'react-icons/gr';
 import { SiKeycdn } from 'react-icons/si';
+import Swal from 'sweetalert2';
 
 interface FormData {
   user: string;
@@ -30,23 +31,28 @@ export default function LoginForm() {
   const router = useRouter();
 
   const onSubmit = async (formData: FormData) => {
-    const { data, loading, error } = await refetch({
-      input: {
-        email: formData.user,
-        password: formData.password,
-      },
-    });
+    try {
+      const { data } = await refetch({
+        input: {
+          email: formData.user,
+          password: formData.password,
+        },
+      });
 
-    if (data) {
-      Cookies.set('tokenSereno', data.signIn.token);
-      router.push('./')
+      if (data) {
+        Cookies.set('sereno_auth', data.signIn.token);
+        router.push('./')
+      }
+    } catch (error) {
+      if (error) {
+        console.log(error)
+        Swal.fire({
+          title: 'Error',
+          text: 'Credenciales Invalidas.',
+          icon: 'error',
+        });
+      }
     }
-    if (error) {
-      console.log(error);
-    }
-    // .then((data) => {
-    //   })
-    // .catch((err) => {});
   };
 
   const handlePasswordSingUp = () => {

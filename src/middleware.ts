@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  let jwt = request.cookies.get('tokenSereno');
+  let jwt = request.cookies.get('sereno_auth');
 
   if (request.nextUrl.pathname === '/login' && jwt) {
     return NextResponse.redirect(new URL('/', request.url));
