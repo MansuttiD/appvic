@@ -2,6 +2,9 @@
 
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import ThanksMessageForm from './ThanksMessageForm';
 
 interface FormDataPin {
   pin1: string;
@@ -23,8 +26,12 @@ interface FormDataRegister {
   };
 }
 
-export default function PinModal({ dataRegister, createUser }: any) {
+export default function PinModal({ dataRegister, createUser,handleCloseMessage }: any) {
+  
   const { register, handleSubmit, watch, setFocus } = useForm<FormDataPin>();
+
+  const MySwal = withReactContent(Swal);
+
   const onSubmit = async (dataPin: FormDataPin) => {
 
     try {
@@ -49,14 +56,27 @@ export default function PinModal({ dataRegister, createUser }: any) {
           },
         },
       });
-
+      if (data) {
+        MySwal.fire({
+          html: <ThanksMessageForm handleCloseMessage={handleCloseMessage} />, // Renderiza tu formulario dentro de SweetAlert
+          showCancelButton: false,
+          showConfirmButton: false,
+          width: 832,
+          customClass: {
+            popup: 'rounded-[22px]', // Clase CSS para el contenedor del popup
+          },
+        });
+      }
       // Muestra la respuesta en la consola
       console.log('Respuesta de la API GraphQL:', data);
-
-      // Hacer algo con los datos de la respuesta, por ejemplo, redireccionar o mostrar un mensaje de éxito
-    } catch (error) {
-      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
-      console.error('Error al llamar a la API GraphQL:', error);
+    } catch (error:any) {
+      if (error) {
+        Swal.fire({
+          title: 'Error',
+          text: error.message,
+          icon: 'error',
+        });
+      }
     }
   };
 

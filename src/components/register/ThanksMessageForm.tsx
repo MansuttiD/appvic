@@ -1,15 +1,4 @@
-'use client';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-
-const MySwal = withReactContent(Swal);
-
-const PinModalPopup = () => {
-
-
-};
-
-export default function ThanksMessageForm() {
+export default function ThanksMessageForm({handleCloseMessage}:any) {
 
   return (
     <div className="flex flex-col gap-5 px-5 py-2">
@@ -58,7 +47,7 @@ export default function ThanksMessageForm() {
 
         <div className="flex justify-center">
   <button
-    onClick={PinModalPopup}
+  onClick={handleCloseMessage}
     className="blue_gradient w-full text-white rounded-3xl font-normal text-base py-2 px-4 sm:py-3 md:py-3 md:px-6"
     type="submit"
   >
