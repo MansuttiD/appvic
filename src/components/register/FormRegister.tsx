@@ -79,46 +79,11 @@ export default function FormRegister({ createUser }: any) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <section className="flex flex-col gap-3 md:flex-row md:justify-around">
-        <div className="mb-4 flex flex-col">
-          <div className="pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
-            <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
-            <input
-              placeholder="Usuario"
-              className="h-12 w-full ml-2 outline-none"
-              type="text"
-              id="userName"
-              autoComplete="false"
-              {...register('userName', {
-                required: {
-                  value: true,
-                  message: 'Usuario es requerido',
-                },
-                minLength: {
-                  value: 4,
-                  message: 'Usuario debe tener al menos 4 caracteres',
-                },
-                maxLength: {
-                  value: 20,
-                  message: 'Usuario debe tener maximo 20 caracteres',
-                },
-              })}
-            />
-          </div>
-          {errors.userName && (
-            <span
-              style={{
-                color: 'red',
-                fontSize: '12px',
-              }}
-            >
-              {errors.userName.message}
-            </span>
-          )}
-        </div>
+      <section className="flex flex-col gap-3 md:flex-row md:justify-between">
+        
 
         <div className="mb-4 flex flex-col">
-          <div className=" pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
+          <div className=" pl-6 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
             <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
             <input
               placeholder="Nombre"
@@ -155,7 +120,7 @@ export default function FormRegister({ createUser }: any) {
         </div>
 
         <div className="mb-4 flex flex-col">
-          <div className="pl-2 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
+          <div className="pl-6 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
             <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
             <input
               placeholder="Apellido"
@@ -190,6 +155,44 @@ export default function FormRegister({ createUser }: any) {
             </span>
           )}
         </div>
+
+        <div className="mb-4 flex flex-col">
+          <div className="pl-6 flex border-[1px] border-solid border-[#E7E7E7] rounded-[20px] p-[0.15rem] items-center overflow-hidden gap-1">
+            <FaUserAlt className="text-[#9E9E9E] text-[18px]" />
+            <input
+              placeholder="Usuario"
+              className="h-12 w-full ml-2 outline-none"
+              type="text"
+              id="userName"
+              autoComplete="false"
+              {...register('userName', {
+                required: {
+                  value: true,
+                  message: 'Usuario es requerido',
+                },
+                minLength: {
+                  value: 4,
+                  message: 'Usuario debe tener al menos 4 caracteres',
+                },
+                maxLength: {
+                  value: 20,
+                  message: 'Usuario debe tener maximo 20 caracteres',
+                },
+              })}
+            />
+          </div>
+          {errors.userName && (
+            <span
+              style={{
+                color: 'red',
+                fontSize: '12px',
+              }}
+            >
+              {errors.userName.message}
+            </span>
+          )}
+        </div>
+
       </section>
 
       <section className="flex flex-col gap-3 md:flex-row">
